@@ -7,7 +7,7 @@ using namespace std;
 
 int Board[16];
 int Count = 0;
-int n;
+int N;
 
 void queen(int row, int n);
 
@@ -58,19 +58,24 @@ void Queen(int row, int n) {
 }
 
 int main(int argc, char *argv[]) {
+    /*
     if (argc != 2)
         cout << "please provide argument" << '\n';
     else
         n = atoi(argv[1]);
+        */
 
-    if (4 > n || n > 16 || argc != 2)
-    {
-        cout << "Use number between 4 and 17" << '\n';
-    }
-    else
-    {
-        cout << n << "Queens Problem Recursive" << '\n';
-        Queen(1, n);
+    if (argc == 2) {
+        N = atoi(argv[1]);
+
+        if (N >= 5 && N <= 16) {
+            cout << N << " Queens Problem Recursive" << endl;
+            Queen(1, N);
+        } else {
+            cout << "Use number between 4 and 17" << endl;
+        }
+    } else {
+        cout << "Missing param1 (N)" << endl;
     }
 
     return 0;
