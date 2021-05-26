@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+#define HEADER "*ABCDEFGHIJKLMNOP"
+
 using namespace std;
 
 int Board[16];
@@ -11,16 +13,15 @@ void queen(int row, int n);
 
 void Print(int n) {
     int i,j;
-    string Header = "*ABCDEFGHIJKLMNOP";
 
     cout << "solution: " << ++Count << '\n';
 
     for (int i = 0; i <= n; i++)
-        cout << Header[i] << ' ';
+        cout << HEADER[i] << ' ';
 
     for (i = 1; i<=n; ++i)
     {
-        cout << '\n' << Header[i] << ' ';
+        cout << '\n' << HEADER[i] << ' ';
         for (j = 1; j <= n; j++)
             if(Board[i] == j)
                 cout << "Q ";
