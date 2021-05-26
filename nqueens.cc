@@ -14,57 +14,56 @@ void queen(int row, int n);
 void Print(int n) {
     int i,j;
 
-    cout << "solution: " << ++Count << '\n';
+    cout << "solution: " << ++Count << endl;
 
-    for (int i = 0; i <= n; i++)
+    for (int i = 0; i <= n; i++) {
         cout << HEADER[i] << ' ';
-
-    for (i = 1; i<=n; ++i)
-    {
-        cout << '\n' << HEADER[i] << ' ';
-        for (j = 1; j <= n; j++)
-            if(Board[i] == j)
-                cout << "Q ";
-            else
-                cout << "- ";
     }
 
-    cout << '\n';
+    for (i = 1; i<=n; ++i) {
+        cout << '\n' << HEADER[i] << ' ';
+
+        for (j = 1; j <= n; j++) {
+            if(Board[i] == j) {
+                cout << "Q ";
+            } else {
+                cout << "- ";
+            }
+        }
+    }
+
+    cout << endl;
 }
 
 int Place(int row, int col) {
-    for (int i = 1; i <= row - 1; ++i)
-        if (Board[i] == col)
+    for (int i = 1; i <= row - 1; ++i) {
+        if (Board[i] == col) {
             return 0;
-        else
-            if (abs(Board[i] - col) == abs(i - row))
+        } else {
+            if (abs(Board[i] - col) == abs(i - row)) {
                 return 0;
+            }
+        }
+    }
+
     return 1;
 }
 
 void Queen(int row, int n) {
-    for (int col = 1; col <= n; ++col)
-    {
-        if(Place(row, col))
-        {
+    for (int col = 1; col <= n; ++col) {
+        if(Place(row, col)) {
             Board[row] = col;
 
-	    if (row == n)
-             	Print(n);
-            else
+            if (row == n) {
+                Print(n);
+            } else {
                 Queen(row + 1,n);
+            }
         }
     }
 }
 
 int main(int argc, char *argv[]) {
-    /*
-    if (argc != 2)
-        cout << "please provide argument" << '\n';
-    else
-        n = atoi(argv[1]);
-        */
-
     if (argc == 2) {
         N = atoi(argv[1]);
 
